@@ -1,0 +1,37 @@
+<%= form_with(model: fest, local: true) do |form| %>
+  <% if fest.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(fest.errors.count, "error") %> prohibited this fest from being saved:</h2>
+
+      <ul>
+      <% fest.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :fest_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :fest_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_date %>
+    <%= form.date_select :start_date, id: :fest_start_date %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_date %>
+    <%= form.date_select :end_date, id: :fest_end_date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

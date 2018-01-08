@@ -1,0 +1,57 @@
+<%= form_with(model: event, local: true) do |form| %>
+  <% if event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :event_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :event_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :entry_fee %>
+    <%= form.number_field :entry_fee, id: :event_entry_fee %>
+  </div>
+
+  <div class="field">
+    <%= form.label :start_datetime %>
+    <%= form.datetime_select :start_datetime, id: :event_start_datetime %>
+  </div>
+
+  <div class="field">
+    <%= form.label :end_datetime %>
+    <%= form.datetime_select :end_datetime, id: :event_end_datetime %>
+  </div>
+
+  <div class="field">
+    <%= form.label :no_participants %>
+    <%= form.number_field :no_participants, id: :event_no_participants %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.text_field :location, id: :event_location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :fest_id %>
+    <%= form.collection_select :fest_id, Fest.all,:id,:name,prompt:"select fest" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
